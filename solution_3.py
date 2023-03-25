@@ -1,31 +1,23 @@
+def read_file(file_name):
+    file = ''
+    f = open(file_name, 'rt', encoding='utf-8')
+    file_len = (len(f.readlines()))
+    f.seek(0)
+    for _ in range(file_len):
+        file += f.readline().strip() + '\n'
+    f.close()
+
+    return file_len, file
+
 def stack_files():
-    f = open('1.txt', 'rt', encoding='utf-8')
-    file_1 = ''
-    file_1_range = len(f.readlines())
-    f.seek(0)
-    for _ in range(file_1_range):
-        file_1 += f.readline()
-    f.close()
 
-    f = open('2.txt', 'rt', encoding='utf-8')
-    file_2 = ''
-    file_2_range = len(f.readlines())
-    f.seek(0)
-    for _ in range(file_2_range):
-        file_2 += f.readline().strip()
-    f.close()
+    len_1, file_1 = read_file('1.txt')
+    len_2, file_2 = read_file('2.txt')
+    len_3, file_3 = read_file('3.txt')
 
-    f = open('3.txt', 'rt', encoding='utf-8')
-    file_3 = ''
-    file_3_range = len(f.readlines())
-    f.seek(0)
-    for _ in range(file_3_range):
-        file_3 += f.readline()
-    f.close()
-
-    first = {'name': '1.txt', 'length': file_1_range, 'file': file_1}
-    second = {'name': '2.txt', 'length': file_2_range, 'file': file_2}
-    third = {'name': '3.txt', 'length': file_3_range, 'file': file_3}
+    first = {'name': '1.txt', 'length': len_1, 'file': file_1}
+    second = {'name': '2.txt', 'length': len_2, 'file': file_2}
+    third = {'name': '3.txt', 'length': len_3, 'file': file_3}
     all_texts = [first, second, third]
 
     for i in range(len(all_texts)-1):
